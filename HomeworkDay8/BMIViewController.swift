@@ -18,6 +18,11 @@ final class BMIViewController: UIViewController {
     @IBOutlet private weak var painAgeButton: UIButton!
     @IBOutlet private weak var plusAgeButton: UIButton!
     @IBOutlet private weak var heightSlider: UISlider!
+    @IBOutlet private weak var calculateButton: UIButton!
+    @IBOutlet private weak var heightView: UIView!
+    @IBOutlet private weak var weightView: UIView!
+    @IBOutlet private weak var ageView: UIView!
+    
     var countWeight: Int = 0
     var countAge: Int = 0
     
@@ -27,6 +32,10 @@ final class BMIViewController: UIViewController {
     }
     
     private func setupUI() {
+        calculateButton.layer.cornerRadius = 8
+        [maleView, femaleView, heightView, weightView, ageView].forEach {
+            $0?.layer.cornerRadius = 8
+        }
         heightSlider.minimumValue = 0
         heightSlider.maximumValue = 200
         heightSlider.value = 0
@@ -75,5 +84,10 @@ final class BMIViewController: UIViewController {
     @IBAction func tapToPlusAge(_ sender: Any) {
         countAge += 1
         agelabel.text = String(countAge)
+    }
+    @IBAction func tapToCalculateBMI(_ sender: Any) {
+        
+        
+        
     }
 }
