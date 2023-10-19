@@ -23,8 +23,10 @@ final class BMIViewController: UIViewController {
     @IBOutlet private weak var weightView: UIView!
     @IBOutlet private weak var ageView: UIView!
     
-    var countWeight: Int = 0
-    var countAge: Int = 0
+    var countWeight: Int = 10
+    var countAge: Int = 1
+    let radius: CGFloat = 8
+    var valueBMI: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +34,16 @@ final class BMIViewController: UIViewController {
     }
     
     private func setupUI() {
-        calculateButton.layer.cornerRadius = 8
+        weigthLabel.text = String(countWeight)
+        agelabel.text = String(countAge)
+        heightLabel.text = String(50)
+        calculateButton.layer.cornerRadius = radius
         [maleView, femaleView, heightView, weightView, ageView].forEach {
-            $0?.layer.cornerRadius = 8
+            $0?.layer.cornerRadius = radius
         }
-        heightSlider.minimumValue = 0
-        heightSlider.maximumValue = 200
-        heightSlider.value = 0
+        heightSlider.minimumValue = 50
+        heightSlider.maximumValue = 250
+        heightSlider.value = 50
         heightSlider.addTarget(self, action: #selector(changeValueSlider), for: .valueChanged)
         
         let tapMale = UITapGestureRecognizer(target: self, action: #selector(tapToChoiceMale))
@@ -48,15 +53,21 @@ final class BMIViewController: UIViewController {
         femaleView.addGestureRecognizer(tapFemale)
     }
     
+//    func calculateBMI() {
+//        var numberBMI: Double = 0
+//        numberBMI = Double(countWeight / ((countWeight * countWeight) / 10000))
+//        print(numberBMI)
+//    }
+    
     @objc func tapToChoiceMale(_ gesture: UITapGestureRecognizer) {
-        maleView.backgroundColor = .systemGray3
-        femaleView.backgroundColor = .white
+        maleView.backgroundColor = UIColor(red: 38/255, green: 37/255, blue: 60/255, alpha: 1)
+        femaleView.backgroundColor = UIColor(red: 54/255, green: 54/255, blue: 68/255, alpha: 1)
         
     }
     
     @objc func tapToChoiceFemale(_ gesture: UITapGestureRecognizer) {
-        femaleView.backgroundColor = .systemGray3
-        maleView.backgroundColor = .white
+        femaleView.backgroundColor = UIColor(red: 38/255, green: 37/255, blue: 60/255, alpha: 1)
+        maleView.backgroundColor = UIColor(red: 54/255, green: 54/255, blue: 68/255, alpha: 1)
     }
     
     @objc func changeValueSlider(_ sender: UISlider) {
@@ -66,27 +77,50 @@ final class BMIViewController: UIViewController {
     }
     
     @IBAction func tapToPainWeight(_ sender: Any) {
-        if countWeight > 0{
+        if countWeight > 10 {
             countWeight -= 1
             weigthLabel.text = String(countWeight)
         }
     }
     @IBAction func tapToPlusWeight(_ sender: Any) {
-        countWeight += 1
-        weigthLabel.text = String(countWeight)
+        if countWeight < 150 {
+            countWeight += 1
+            weigthLabel.text = String(countWeight)
+        }
     }
     @IBAction func tapToPainAge(_ sender: Any) {
-        if countAge > 0 {
+        if countAge > 1 {
             countAge -= 1
             agelabel.text = String(countAge)
         }
     }
     @IBAction func tapToPlusAge(_ sender: Any) {
-        countAge += 1
-        agelabel.text = String(countAge)
+        if countAge < 120 {
+            countAge += 1
+            agelabel.text = String(countAge)
+        }
     }
     @IBAction func tapToCalculateBMI(_ sender: Any) {
-        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let resultView = mainStoryboard.instantiateViewController(withIdentifier: "ResultViewControllerID") as! ResultViewController
+        resultView.modalPresentationStyle = .overFullScreen
+        self.present(resultView, animated: false)
+        var numberBMI: Double = 0
+        numberBMI = Double(countWeight / ((countWeight * countWeight) / 10000))
+        valueBMI = numberBMI
+        performSegue(withIdentifier: "segueToSecondViewController", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueToSecondViewController" {
+            if let secondViewController = segue.destination as? SecondViewController {
+                secondViewController.receivedData = data // Truyền dữ liệu sang màn hình thứ hai
+            }
+        }
+    }
+    
+    //Keo tha tap Gesture
+    @IBAction func tapToHeightView(_ sender: Any) {
         
         
     }

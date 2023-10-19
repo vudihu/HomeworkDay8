@@ -14,6 +14,7 @@
 		CB48FE6E2ADED5C30065EB90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB48FE6D2ADED5C30065EB90 /* Assets.xcassets */; };
 		CB48FE712ADED5C30065EB90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB48FE6F2ADED5C30065EB90 /* LaunchScreen.storyboard */; };
 		CB48FE7B2ADEF6220065EB90 /* BMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB48FE7A2ADEF6220065EB90 /* BMIViewController.swift */; };
+		CB82A1262AE197B800A7F0B8 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB82A1252AE197B800A7F0B8 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CB48FE702ADED5C30065EB90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB48FE722ADED5C30065EB90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB48FE7A2ADEF6220065EB90 /* BMIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIViewController.swift; sourceTree = "<group>"; };
+		CB82A1252AE197B800A7F0B8 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				CB48FE662ADED5C00065EB90 /* SceneDelegate.swift */,
 				CB48FE682ADED5C00065EB90 /* ViewController.swift */,
 				CB48FE7A2ADEF6220065EB90 /* BMIViewController.swift */,
+				CB82A1252AE197B800A7F0B8 /* ResultViewController.swift */,
 				CB48FE6A2ADED5C00065EB90 /* Main.storyboard */,
 				CB48FE6D2ADED5C30065EB90 /* Assets.xcassets */,
 				CB48FE6F2ADED5C30065EB90 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB82A1262AE197B800A7F0B8 /* ResultViewController.swift in Sources */,
 				CB48FE692ADED5C00065EB90 /* ViewController.swift in Sources */,
 				CB48FE652ADED5C00065EB90 /* AppDelegate.swift in Sources */,
 				CB48FE7B2ADEF6220065EB90 /* BMIViewController.swift in Sources */,
